@@ -1,5 +1,7 @@
 import React from "react";
-import Typography from "@material-ui/core/Typography";
+
+import Content from "./containers/Content";
+import Toolbar from "./containers/Toolbar";
 import ThemeProvider from "./providers/ThemeProvider";
 
 type TimeSheetProps = {};
@@ -7,7 +9,8 @@ type TimeSheetProps = {};
 const Timesheet: React.FC<TimeSheetProps> = () => {
   return (
     <ThemeProvider>
-      <Typography>Timesheet</Typography>
+      <Toolbar />
+      <Content />
     </ThemeProvider>
   );
 };
