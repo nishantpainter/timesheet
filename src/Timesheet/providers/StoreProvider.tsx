@@ -39,7 +39,9 @@ const StoreProvider = (props: any) => {
     ]);
   }, []);
 
-  const handleDeleteAllLines = React.useCallback(() => {}, []);
+  const handleDeleteAllLines = React.useCallback(() => {
+    setLines([]);
+  }, []);
 
   const handleDeleteLine = React.useCallback((event, line) => {
     setLines((lines) => lines.filter((l) => l.id !== line.id));
