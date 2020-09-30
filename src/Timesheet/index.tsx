@@ -4,16 +4,19 @@ import Content from "./containers/Content";
 import Toolbar from "./containers/Toolbar";
 import ThemeProvider from "./providers/ThemeProvider";
 import StoreProvider from "./providers/StoreProvider";
+import SnackbarProvider from "./providers/SnackbarProvider";
 
 type TimeSheetProps = {};
 
 const Timesheet: React.FC<TimeSheetProps> = () => {
   return (
     <ThemeProvider>
-      <StoreProvider>
-        <Toolbar />
-        <Content />
-      </StoreProvider>
+      <SnackbarProvider>
+        <StoreProvider>
+          <Toolbar />
+          <Content />
+        </StoreProvider>
+      </SnackbarProvider>
     </ThemeProvider>
   );
 };
