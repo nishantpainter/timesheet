@@ -1,5 +1,6 @@
 const DARK_MODE = "dark_mode";
 const LINES = "lines";
+const IMPERATIVE = "imperative";
 
 export function getItem(key) {
   return JSON.parse(localStorage.getItem(key));
@@ -25,6 +26,14 @@ export function getLines() {
   return getItem(LINES);
 }
 
+export function setImperative(value) {
+  return setItem(IMPERATIVE, value);
+}
+
+export function getImperative() {
+  return getItem(IMPERATIVE);
+}
+
 export default {
   getItem,
   setItem,
@@ -32,4 +41,6 @@ export default {
   setDarkMode,
   setLines,
   getLines,
+  setImperative,
+  getImperative,
 };
