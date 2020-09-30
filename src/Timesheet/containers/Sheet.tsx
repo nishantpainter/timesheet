@@ -3,15 +3,21 @@ import React from "react";
 import { makeStyles } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
+import Checkbox from "@material-ui/core/Checkbox";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Typography from "@material-ui/core/Typography";
 
 import { useStore } from "../providers/StoreProvider";
 import TimesheetLineList from "../components/TimesheetLineList";
+import ImperativeTimeInfo from "../components/ImperativeTimeInfo";
 
 type ListProps = {};
 
 const useStyles = makeStyles((theme) => ({
   button: { marginRight: theme.spacing() },
+  imperativeFormControl: {
+    marginRight: theme.spacing(0.5),
+  },
 }));
 
 const List: React.FC<ListProps> = (props) => {
@@ -19,10 +25,12 @@ const List: React.FC<ListProps> = (props) => {
 
   const {
     lines = [],
+    imperative,
     handleAddNewLine,
     handleChangeLine,
     handleDeleteLine,
     handleDeleteAllLines,
+    handleChangeImperative,
   } = useStore();
 
   const totalHours = lines.reduce(
@@ -54,6 +62,21 @@ const List: React.FC<ListProps> = (props) => {
         <Typography>
           Total Hours : <b>{totalHours.toFixed(2)}</b>
         </Typography>
+      </Box>
+      <Box display="flex" alignItems="center" height={40} marginBottom={1}>
+        <FormControlLabel
+          control={
+            <Checkbox
+              checked={imperative}
+              onChange={handleChangeImperative}
+              color="primary"
+            />
+          }
+          classes={{ root: classes.imperativeFormControl }}
+          label="Imperative Time"
+        />
+        &nbsp;
+        <ImperativeTimeInfo />
       </Box>
       <TimesheetLineList
         lines={lines}
