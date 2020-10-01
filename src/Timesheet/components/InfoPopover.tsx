@@ -76,7 +76,11 @@ const InfoPopover: React.FC<InfoPopoverProps> = (props) => {
       <Typography gutterBottom>
         The application do not consume any consumer data and use local storage
         for persisting the information. Timesheet is&nbsp;
-        <Link color="primary" href="#">
+        <Link
+          color="primary"
+          href="https://github.com/nishantpainter/timesheet"
+          target="_blank"
+        >
           Open-source
         </Link>
         . Pull request are welcome!
