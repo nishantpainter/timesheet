@@ -32,20 +32,33 @@ const StoreProvider = (props: any) => {
     }
   };
 
-  const handleAddNewLine = React.useCallback(() => {
-    setLines((lines: Line[]) => [
-      ...lines,
-      { id: uuid(), title: "", hours: "" },
-    ]);
+  const handleUpdateStorageLines = React.useCallback((lines) => {
+    StorageService.setLines(lines);
   }, []);
+
+  const handleAddNewLine = React.useCallback(() => {
+    setLines((lines: Line[]) => {
+      const updatedLines = [...lines, { id: uuid(), title: "", hours: "" }];
+      handleUpdateStorageLines(updatedLines);
+      return updatedLines;
+    });
+  }, [handleUpdateStorageLines]);
 
   const handleDeleteAllLines = React.useCallback(() => {
     setLines([]);
-  }, []);
+    handleUpdateStorageLines([]);
+  }, [handleUpdateStorageLines]);
 
-  const handleDeleteLine = React.useCallback((event, line) => {
-    setLines((lines) => lines.filter((l) => l.id !== line.id));
-  }, []);
+  const handleDeleteLine = React.useCallback(
+    (event, line) => {
+      setLines((lines) => {
+        const updatedLines = lines.filter((l) => l.id !== line.id);
+        handleUpdateStorageLines(updatedLines);
+        return updatedLines;
+      });
+    },
+    [handleUpdateStorageLines]
+  );
 
   const handleChangeLine = React.useCallback(
     (event, line) => {
@@ -61,12 +74,14 @@ const StoreProvider = (props: any) => {
       }
 
       setLines((lines) => {
-        return lines.map((l) =>
+        const updatedLines = lines.map((l) =>
           l.id === line.id ? { ...line, [name]: value } : l
         );
+        handleUpdateStorageLines(updatedLines);
+        return updatedLines;
       });
     },
-    [imperative]
+    [imperative, handleUpdateStorageLines]
   );
 
   const handleChangeImperative = React.useCallback((event) => {
