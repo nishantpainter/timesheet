@@ -8,6 +8,7 @@ import BrightnessIcon from "@material-ui/icons/Brightness6";
 import SaveAltIcon from "@material-ui/icons/SaveAlt";
 import DeleteIcon from "@material-ui/icons/Delete";
 import HelpIcon from "@material-ui/icons/Help";
+import AddIcon from "@material-ui/icons/Add";
 
 const icons = {
   info: InfoIcon,
@@ -15,6 +16,7 @@ const icons = {
   download: SaveAltIcon,
   delete: DeleteIcon,
   question: HelpIcon,
+  add: AddIcon,
 };
 
 type IconButtonProps = MuiIconButtonProps & { icon: keyof typeof icons };
