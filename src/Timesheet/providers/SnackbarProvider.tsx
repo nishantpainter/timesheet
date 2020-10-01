@@ -19,7 +19,7 @@ const SnackbarProvider: React.FC<SnackbarProviderProps> = (props) => {
       ref={notistackRef}
       anchorOrigin={{
         vertical: "bottom",
-        horizontal: "left",
+        horizontal: "right",
       }}
       action={(key) => (
         <Button color="inherit" size="small" onClick={onClickDismiss(key)}>
