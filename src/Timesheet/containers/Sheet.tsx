@@ -6,6 +6,10 @@ import Button from "@material-ui/core/Button";
 import Checkbox from "@material-ui/core/Checkbox";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Typography from "@material-ui/core/Typography";
+import Dialog from "@material-ui/core/Dialog";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogActions from "@material-ui/core/DialogActions";
 
 import { useStore } from "../providers/StoreProvider";
 import TimesheetLineList from "../components/TimesheetLineList";
@@ -33,6 +37,18 @@ const List: React.FC<ListProps> = (props) => {
     handleChangeImperative,
   } = useStore();
 
+  const [confirmationDialogOpen, setConfirmationDialogOpen] = React.useState<
+    boolean
+  >(false);
+
+  const handleOpenConfirmationDialog = React.useCallback(() => {
+    setConfirmationDialogOpen(true);
+  }, []);
+
+  const handleCloseConfirmationDialog = React.useCallback(() => {
+    setConfirmationDialogOpen(false);
+  }, []);
+
   const totalHours = lines.reduce(
     (totalHours, line) => totalHours + (Number(line.hours) || 0),
     0
@@ -55,7 +71,7 @@ const List: React.FC<ListProps> = (props) => {
           color="primary"
           size="small"
           className={classes.button}
-          onClick={handleDeleteAllLines}
+          onClick={handleOpenConfirmationDialog}
         >
           Delete All Lines
         </Button>
@@ -83,6 +99,29 @@ const List: React.FC<ListProps> = (props) => {
         onDelete={handleDeleteLine}
         onChange={handleChangeLine}
       />
+      <Dialog
+        open={confirmationDialogOpen}
+        onClose={handleCloseConfirmationDialog}
+      >
+        <DialogTitle>Delete</DialogTitle>
+        <DialogContent>
+          <Typography>Do you want to delete all timesheet lines ?</Typography>
+        </DialogContent>
+        <DialogActions>
+          <Button size="small" onClick={handleCloseConfirmationDialog}>
+            Cancel
+          </Button>
+          <Button
+            color="primary"
+            onClick={() => {
+              handleDeleteAllLines();
+              handleCloseConfirmationDialog();
+            }}
+          >
+            Delete
+          </Button>
+        </DialogActions>
+      </Dialog>
     </>
   );
 };
