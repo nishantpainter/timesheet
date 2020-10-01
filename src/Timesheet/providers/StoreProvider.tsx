@@ -1,5 +1,6 @@
 import React from "react";
 import { v4 as uuid } from "uuid";
+import { useSnackbar } from "notistack";
 
 import { Line } from "../types";
 import StorageService from "../services/StorageService";
@@ -20,6 +21,8 @@ const StoreContext = React.createContext<Partial<StoreContextType>>({});
 
 const StoreProvider = (props: any) => {
   const { children } = props;
+
+  const { enqueueSnackbar } = useSnackbar();
   const [lines, setLines] = React.useState(defaultLines);
   const [imperative, setImperative] = React.useState(
     StorageService.getImperative()
@@ -40,24 +43,27 @@ const StoreProvider = (props: any) => {
     setLines((lines: Line[]) => {
       const updatedLines = [...lines, { id: uuid(), title: "", hours: "" }];
       handleUpdateStorageLines(updatedLines);
+      enqueueSnackbar("Line Added", { variant: "success" });
       return updatedLines;
     });
-  }, [handleUpdateStorageLines]);
+  }, [handleUpdateStorageLines, enqueueSnackbar]);
 
   const handleDeleteAllLines = React.useCallback(() => {
     setLines([]);
     handleUpdateStorageLines([]);
-  }, [handleUpdateStorageLines]);
+    enqueueSnackbar("All Line Deleted");
+  }, [handleUpdateStorageLines, enqueueSnackbar]);
 
   const handleDeleteLine = React.useCallback(
     (event, line) => {
       setLines((lines) => {
         const updatedLines = lines.filter((l) => l.id !== line.id);
         handleUpdateStorageLines(updatedLines);
+        enqueueSnackbar("Line Deleted");
         return updatedLines;
       });
     },
-    [handleUpdateStorageLines]
+    [handleUpdateStorageLines, enqueueSnackbar]
   );
 
   const handleChangeLine = React.useCallback(
