@@ -10,7 +10,8 @@ import DownloadIconButton from "../components/DownloadIconButton";
 import IconButton from "../components/IconButton";
 import InfoPopover from "../components/InfoPopover";
 import { useTheme } from "../providers/ThemeProvider";
-import { DownloadExtension } from "../types";
+import { useStore } from "../providers/StoreProvider";
+import { DownloadExtension, Line } from "../types";
 
 const useStyles = makeStyles((theme) => ({
   iconButton: {
@@ -26,6 +27,7 @@ const Toolbar: React.FC<ToolbarProps> = (props) => {
   const classes = useStyles();
   const { handleToggleDarkTheme } = useTheme();
 
+  const { lines = [] } = useStore();
   const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(
     null
   );
@@ -46,23 +48,46 @@ const Toolbar: React.FC<ToolbarProps> = (props) => {
     setDate(getDate());
   }, []);
 
-  const handleDownloadTxt = React.useCallback((lines) => {}, []);
+  const handleDownloadFile = React.useCallback(
+    (blob: Blob, fileName: string) => {
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.setAttribute("download", fileName);
+      link.click();
+    },
+    []
+  );
 
-  const handleDownloadCsv = React.useCallback((lines) => {}, []);
+  const handleDownloadTxt = React.useCallback(() => {
+    const txt: string = lines.reduce((txt: string, line: Line): string => {
+      if (line.title || line.hours) {
+        txt += `${line.title || ""} - ${line.hours || "0"}\n`;
+      }
+      return txt;
+    }, "");
 
-  const handleDownloadPdf = React.useCallback((lines) => {}, []);
+    const blob = new Blob([txt], { type: "text/plain" });
+    const fileName = moment().format("DD MMM YYYY") + ".txt";
+
+    handleDownloadFile(blob, fileName);
+  }, [lines, handleDownloadFile]);
+
+  const handleDownloadCsv = React.useCallback(() => {}, []);
+
+  const handleDownloadPdf = React.useCallback(() => {}, []);
 
   const handleDownload = React.useCallback(
     (fileType) => {
       switch (fileType) {
         case DownloadExtension.TXT:
-          handleDownloadTxt([]);
+          handleDownloadTxt();
           break;
         case DownloadExtension.CSV:
-          handleDownloadCsv([]);
+          handleDownloadCsv();
           break;
         case DownloadExtension.PDF:
-          handleDownloadPdf([]);
+          handleDownloadPdf();
           break;
         default:
           return;
