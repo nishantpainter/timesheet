@@ -39,6 +39,7 @@ const TimesheetLine: React.FC<TimesheetLineProps> = (props) => {
           name="title"
           value={line.title}
           onChange={handleChange}
+          multiline
           fullWidth
         />
       </Grid>
