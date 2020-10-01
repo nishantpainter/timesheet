@@ -34,7 +34,7 @@ const List: React.FC<ListProps> = (props) => {
   } = useStore();
 
   const totalHours = lines.reduce(
-    (totalHours, line) => totalHours + Number(line.hours || 0),
+    (totalHours, line) => totalHours + (Number(line.hours) || 0),
     0
   );
 
