@@ -15,6 +15,7 @@ const SnackbarProvider: React.FC<SnackbarProviderProps> = (props) => {
 
   return (
     <NotiStackProvider
+      autoHideDuration={2000}
       maxSnack={3}
       ref={notistackRef}
       anchorOrigin={{
