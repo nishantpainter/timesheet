@@ -64,7 +64,7 @@ const Toolbar: React.FC<ToolbarProps> = (props) => {
     (extension: DownloadExtension) => {
       switch (extension) {
         case DownloadExtension.PDF:
-        case DownloadExtension.TXT:
+        case DownloadExtension.TXT: {
           const txt: string = lines.reduce(
             (txt: string, line: Line): string => {
               if (line.title || line.hours) {
@@ -77,6 +77,19 @@ const Toolbar: React.FC<ToolbarProps> = (props) => {
             )}\n====================\n`
           );
           return txt;
+        }
+        case DownloadExtension.CSV: {
+          const txt: string = lines.reduce(
+            (txt: string, line: Line): string => {
+              if (line.title || line.hours) {
+                txt += `"${line.title || ""}","${line.hours || "0"}"\n`;
+              }
+              return txt;
+            },
+            '"Title","Hours"\n'
+          );
+          return txt;
+        }
         default:
           return "";
       }
@@ -88,11 +101,15 @@ const Toolbar: React.FC<ToolbarProps> = (props) => {
     const txt = handleGetFormattedText(DownloadExtension.TXT);
     const blob = new Blob([txt], { type: "text/plain" });
     const fileName = moment().format("DD MMM YYYY") + ".txt";
-
     handleDownloadFile(blob, fileName);
   }, [handleGetFormattedText, handleDownloadFile]);
 
-  const handleDownloadCsv = React.useCallback(() => {}, []);
+  const handleDownloadCsv = React.useCallback(() => {
+    const txt = handleGetFormattedText(DownloadExtension.CSV);
+    const blob = new Blob([txt], { type: "text/plain" });
+    const fileName = moment().format("DD MMM YYYY") + ".csv";
+    handleDownloadFile(blob, fileName);
+  }, [handleGetFormattedText, handleDownloadFile]);
 
   const handleDownloadPdf = React.useCallback(() => {
     const txt = handleGetFormattedText(DownloadExtension.PDF);
