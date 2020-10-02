@@ -72,7 +72,9 @@ const Toolbar: React.FC<ToolbarProps> = (props) => {
               }
               return txt;
             },
-            ''
+            `Timesheet : ${moment().format(
+              "DD MMM YYYY"
+            )}\n====================\n`
           );
           return txt;
         default:
