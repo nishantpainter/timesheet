@@ -60,9 +60,7 @@ const DownloadIconButton: React.FC<DownloadIconButtonProps> = (props) => {
         onClose={handleCloseMenu}
       >
         <MenuItem onClick={handleDownloadTXT}>TXT File</MenuItem>
-        <MenuItem disabled onClick={handleDowloadCSV}>
-          CSV File
-        </MenuItem>
+        <MenuItem onClick={handleDowloadCSV}>CSV File</MenuItem>
         <MenuItem onClick={handleDownloadPDF}>PDF File</MenuItem>
       </Menu>
     </>
