@@ -33,7 +33,7 @@ const List: React.FC<ListProps> = (props) => {
     handleAddNewLine,
     handleChangeLine,
     handleDeleteLine,
-    handleDeleteAllLines,
+    handleDeleteAllLines: handleDeleteAllLinesStore,
     handleChangeImperative,
   } = useStore();
 
@@ -42,12 +42,20 @@ const List: React.FC<ListProps> = (props) => {
   >(false);
 
   const handleOpenConfirmationDialog = React.useCallback(() => {
+    if (!(lines && lines.length)) {
+      return;
+    }
     setConfirmationDialogOpen(true);
-  }, []);
+  }, [lines]);
 
   const handleCloseConfirmationDialog = React.useCallback(() => {
     setConfirmationDialogOpen(false);
   }, []);
+
+  const handleDeleteAllLines = React.useCallback(() => {
+    handleDeleteAllLinesStore();
+    handleCloseConfirmationDialog();
+  }, [handleDeleteAllLinesStore, handleCloseConfirmationDialog]);
 
   const totalHours = lines.reduce(
     (totalHours, line) => totalHours + (Number(line.hours) || 0),
@@ -111,13 +119,7 @@ const List: React.FC<ListProps> = (props) => {
           <Button size="small" onClick={handleCloseConfirmationDialog}>
             Cancel
           </Button>
-          <Button
-            color="primary"
-            onClick={() => {
-              handleDeleteAllLines();
-              handleCloseConfirmationDialog();
-            }}
-          >
+          <Button color="primary" onClick={handleDeleteAllLines}>
             Delete
           </Button>
         </DialogActions>
