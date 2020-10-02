@@ -5,6 +5,7 @@ import Box from "@material-ui/core/Box";
 import MuiToolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
+import { jsPDF } from "jspdf";
 
 import DownloadIconButton from "../components/DownloadIconButton";
 import IconButton from "../components/IconButton";
@@ -71,7 +72,7 @@ const Toolbar: React.FC<ToolbarProps> = (props) => {
               }
               return txt;
             },
-            ""
+            ''
           );
           return txt;
         default:
@@ -91,7 +92,13 @@ const Toolbar: React.FC<ToolbarProps> = (props) => {
 
   const handleDownloadCsv = React.useCallback(() => {}, []);
 
-  const handleDownloadPdf = React.useCallback(() => {}, []);
+  const handleDownloadPdf = React.useCallback(() => {
+    const txt = handleGetFormattedText(DownloadExtension.PDF);
+    const doc = new jsPDF();
+    doc.text(txt, 10, 10);
+    const fileName = moment().format("DD MMM YYYY") + ".pdf";
+    doc.save(fileName);
+  }, [handleGetFormattedText]);
 
   const handleDownload = React.useCallback(
     (fileType) => {
