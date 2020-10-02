@@ -60,6 +60,17 @@ const Toolbar: React.FC<ToolbarProps> = (props) => {
     []
   );
 
+  const handleGetDate = React.useCallback((format: string = "DD MMM YYYY") => {
+    return moment().format(format);
+  }, []);
+
+  const handleGetFileName = React.useCallback(
+    (extension: DownloadExtension) => {
+      return handleGetDate() + `.${extension.toLowerCase()}`;
+    },
+    [handleGetDate]
+  );
+
   const handleGetFormattedText = React.useCallback(
     (extension: DownloadExtension) => {
       switch (extension) {
@@ -72,9 +83,7 @@ const Toolbar: React.FC<ToolbarProps> = (props) => {
               }
               return txt;
             },
-            `Timesheet : ${moment().format(
-              "DD MMM YYYY"
-            )}\n====================\n`
+            `Timesheet : ${handleGetDate()}\n====================\n`
           );
           return txt;
         }
@@ -94,30 +103,27 @@ const Toolbar: React.FC<ToolbarProps> = (props) => {
           return "";
       }
     },
-    [lines]
+    [lines, handleGetDate]
   );
 
   const handleDownloadTxt = React.useCallback(() => {
     const txt = handleGetFormattedText(DownloadExtension.TXT);
     const blob = new Blob([txt], { type: "text/plain" });
-    const fileName = moment().format("DD MMM YYYY") + ".txt";
-    handleDownloadFile(blob, fileName);
-  }, [handleGetFormattedText, handleDownloadFile]);
+    handleDownloadFile(blob, handleGetFileName(DownloadExtension.TXT));
+  }, [handleGetFormattedText, handleDownloadFile, handleGetFileName]);
 
   const handleDownloadCsv = React.useCallback(() => {
     const txt = handleGetFormattedText(DownloadExtension.CSV);
     const blob = new Blob([txt], { type: "text/plain" });
-    const fileName = moment().format("DD MMM YYYY") + ".csv";
-    handleDownloadFile(blob, fileName);
-  }, [handleGetFormattedText, handleDownloadFile]);
+    handleDownloadFile(blob, handleGetFileName(DownloadExtension.CSV));
+  }, [handleGetFormattedText, handleDownloadFile, handleGetFileName]);
 
   const handleDownloadPdf = React.useCallback(() => {
     const txt = handleGetFormattedText(DownloadExtension.PDF);
     const doc = new jsPDF();
     doc.text(txt, 10, 10);
-    const fileName = moment().format("DD MMM YYYY") + ".pdf";
-    doc.save(fileName);
-  }, [handleGetFormattedText]);
+    doc.save(handleGetFileName(DownloadExtension.PDF));
+  }, [handleGetFormattedText, handleGetFileName]);
 
   const handleDownload = React.useCallback(
     (fileType) => {
