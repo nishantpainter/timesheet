@@ -1,6 +1,7 @@
 import React from "react";
 import { v4 as uuid } from "uuid";
 import { useSnackbar } from "notistack";
+import Button from "@material-ui/core/Button";
 
 import { Line } from "../types";
 import StorageService from "../services/StorageService";
@@ -22,7 +23,7 @@ const StoreContext = React.createContext<Partial<StoreContextType>>({});
 const StoreProvider = (props: any) => {
   const { children } = props;
 
-  const { enqueueSnackbar } = useSnackbar();
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
   const [lines, setLines] = React.useState(defaultLines);
   const [imperative, setImperative] = React.useState(
     StorageService.getImperative()
@@ -56,14 +57,33 @@ const StoreProvider = (props: any) => {
 
   const handleDeleteLine = React.useCallback(
     (event, line) => {
+      const action = (key: any) => (
+        <>
+          <Button color="secondary" size="small" onClick={() => {}}>
+            Undo
+          </Button>
+          <Button
+            color="inherit"
+            size="small"
+            onClick={() => {
+              closeSnackbar(key);
+            }}
+          >
+            Dismiss
+          </Button>
+        </>
+      );
+
       setLines((lines) => {
         const updatedLines = lines.filter((l) => l.id !== line.id);
         handleUpdateStorageLines(updatedLines);
-        enqueueSnackbar("Line Deleted");
+        enqueueSnackbar("Line Deleted", {
+          action,
+        });
         return updatedLines;
       });
     },
-    [handleUpdateStorageLines, enqueueSnackbar]
+    [handleUpdateStorageLines, enqueueSnackbar, closeSnackbar]
   );
 
   const handleChangeLine = React.useCallback(
