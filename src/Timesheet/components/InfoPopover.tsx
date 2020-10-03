@@ -10,7 +10,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
   popoverPaper: {
-    width: 400,
+    width: 500,
     padding: theme.spacing(2),
   },
   link: {
@@ -62,20 +62,24 @@ const InfoPopover: React.FC<InfoPopoverProps> = (props) => {
       <Divider className={classes.divider} light />
       <Typography color="secondary" gutterBottom>
         <Check />
-        &nbsp;Hassle-free access to your work sheet lines
+        &nbsp;Hassle-free access to your timesheet lines
       </Typography>
       <Typography color="secondary" gutterBottom>
         <Check />
-        &nbsp;Instant overview of total hours done
+        &nbsp;Instant overview of total time hours
       </Typography>
       <Typography color="secondary" gutterBottom>
         <Check />
-        &nbsp;Download timesheet in txt, pdf and csv format
+        &nbsp;Download timesheet in TXT, CSV and PDF format
+      </Typography>
+      <Typography color="secondary" gutterBottom>
+        <Check />
+        &nbsp;Dark mode
       </Typography>
       <Divider className={classes.divider} light />
       <Typography gutterBottom>
-        The application do not store any consumer data and use local storage
-        for persisting the information. Timesheet is&nbsp;
+        The application do not store any consumer data and use local storage for
+        persisting the information. Timesheet is&nbsp;
         <Link
           color="primary"
           href="https://github.com/nishantpainter/timesheet"
