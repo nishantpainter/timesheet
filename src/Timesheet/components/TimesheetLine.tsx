@@ -30,7 +30,7 @@ const TimesheetLine: React.FC<TimesheetLineProps> = (props) => {
   );
 
   return (
-    <Grid container spacing={1} alignItems="center">
+    <Grid container spacing={1} alignItems="flex-start">
       <Grid item xs={7} sm={9}>
         <TextField
           variant="outlined"
