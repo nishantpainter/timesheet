@@ -56,10 +56,21 @@ const StoreProvider = (props: any) => {
   }, [handleUpdateStorageLines, enqueueSnackbar]);
 
   const handleDeleteLine = React.useCallback(
-    (event, line) => {
+    (event, line: Line) => {
       const action = (key: any) => (
         <>
-          <Button color="secondary" size="small" onClick={() => {}}>
+          <Button
+            color="secondary"
+            size="small"
+            onClick={() => {
+              setLines((lines) => {
+                const updatedLines = [...lines, line];
+                handleUpdateStorageLines(updatedLines);
+                return updatedLines;
+              });
+              closeSnackbar(key);
+            }}
+          >
             Undo
           </Button>
           <Button
