@@ -74,7 +74,7 @@ const InfoPopover: React.FC<InfoPopoverProps> = (props) => {
       </Typography>
       <Divider className={classes.divider} light />
       <Typography gutterBottom>
-        The application do not consume any consumer data and use local storage
+        The application do not store any consumer data and use local storage
         for persisting the information. Timesheet is&nbsp;
         <Link
           color="primary"
