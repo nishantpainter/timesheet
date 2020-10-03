@@ -10,20 +10,12 @@ import DialogActions from "@material-ui/core/DialogActions";
 
 import { useStore } from "../providers/StoreProvider";
 import TimesheetLineList from "../components/TimesheetLineList";
+import TimesheetLineControl from "../components/TimesheetLineControl";
 import ImperativeTimeControl from "../components/ImperativeTimeControl";
-
-const useStyles = makeStyles((theme) => ({
-  button: { marginRight: theme.spacing() },
-  imperativeFormControl: {
-    marginRight: theme.spacing(0.5),
-  },
-}));
 
 type ListProps = {};
 
 const List: React.FC<ListProps> = (props) => {
-  const classes = useStyles();
-
   const {
     lines = [],
     imperative,
@@ -61,29 +53,11 @@ const List: React.FC<ListProps> = (props) => {
 
   return (
     <>
-      <Box display="flex" alignItems="center" height={40} marginBottom={1}>
-        <Button
-          variant="outlined"
-          color="primary"
-          size="small"
-          className={classes.button}
-          onClick={handleAddNewLine}
-        >
-          Add Line
-        </Button>
-        <Button
-          variant="outlined"
-          color="primary"
-          size="small"
-          className={classes.button}
-          onClick={handleOpenConfirmationDialog}
-        >
-          Delete All Lines
-        </Button>
-        <Typography>
-          Total Hours : <b>{totalHours.toFixed(2)}</b>
-        </Typography>
-      </Box>
+      <TimesheetLineControl
+        onAdd={handleAddNewLine}
+        onDelete={handleOpenConfirmationDialog}
+        totalHours={totalHours}
+      />
       <ImperativeTimeControl
         checked={imperative}
         onChange={handleChangeImperative}
