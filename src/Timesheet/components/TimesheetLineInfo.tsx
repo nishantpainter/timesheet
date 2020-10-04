@@ -43,7 +43,9 @@ const TimesheetLineInfo: React.FC<TimesheetLineInfoProps> = (props) => {
       width="98%"
       justifyContent="space-between"
     >
-      <Typography>{date}</Typography>
+      <Typography>
+        <b>{date}</b>
+      </Typography>
       &nbsp;&nbsp;
       <Typography>
         <b>
