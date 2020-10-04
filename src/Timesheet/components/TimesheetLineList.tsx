@@ -14,7 +14,7 @@ type TimesheetLineListProps = {
 
 const useStyles = makeStyles((theme) => ({
   listWrapper: {
-    padding: theme.spacing(),
+    padding: theme.spacing(1.5),
     height: `calc(100% - ${theme.spacing(6)}px)`,
     overflow: "auto",
   },
