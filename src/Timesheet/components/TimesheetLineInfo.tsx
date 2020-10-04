@@ -38,8 +38,9 @@ const TimesheetLineInfo: React.FC<TimesheetLineInfoProps> = (props) => {
       display="flex"
       alignItems="center"
       height={32}
+      padding={1.5}
       marginBottom={0.5}
-      width="90%"
+      width="98%"
       justifyContent="space-between"
     >
       <Typography>{date}</Typography>
