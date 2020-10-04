@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: theme.spacing(70),
     marginRight: "auto",
     marginLeft: "auto",
-    height: `calc(100% - ${theme.spacing(18)}px)`,
+    height: `calc(100% - ${theme.spacing(13.5)}px)`,
   },
 }));
 

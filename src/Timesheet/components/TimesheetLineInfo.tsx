@@ -35,8 +35,8 @@ const TimesheetLineInfo: React.FC<TimesheetLineInfoProps> = (props) => {
     <Box
       display="flex"
       alignItems="center"
-      height={40}
-      marginBottom={1}
+      height={32}
+      marginBottom={0.5}
       width="90%"
       justifyContent="space-between"
     >
