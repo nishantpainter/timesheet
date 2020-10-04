@@ -17,7 +17,7 @@ const TimesheetLineControl: React.FC<TimesheetLineControlProps> = (props) => {
 
   const classes = useStyles();
   return (
-    <Box display="flex" alignItems="center" height={32} marginBottom={0.5}>
+    <Box display="flex" alignItems="center" height={32} marginBottom={1}>
       <Button
         variant="outlined"
         color="primary"

@@ -22,7 +22,7 @@ const ImperativeTimeControl: React.FC<ImperativeTimeControlProps> = (props) => {
 
   const classes = useStyles();
   return (
-    <Box display="flex" alignItems="center" height={32} marginBottom={0.5}>
+    <Box display="flex" alignItems="center" height={32} marginBottom={1}>
       <FormControlLabel
         control={
           <Checkbox checked={checked} onChange={onChange} color="primary" />
