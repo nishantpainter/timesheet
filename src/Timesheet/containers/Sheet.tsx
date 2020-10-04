@@ -1,6 +1,4 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core";
-import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import Dialog from "@material-ui/core/Dialog";
@@ -9,6 +7,7 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogActions from "@material-ui/core/DialogActions";
 
 import { useStore } from "../providers/StoreProvider";
+import TimesheetLineInfo from "../components/TimesheetLineInfo";
 import TimesheetLineList from "../components/TimesheetLineList";
 import TimesheetLineControl from "../components/TimesheetLineControl";
 import ImperativeTimeControl from "../components/ImperativeTimeControl";
@@ -56,12 +55,12 @@ const List: React.FC<ListProps> = (props) => {
       <TimesheetLineControl
         onAdd={handleAddNewLine}
         onDelete={handleOpenConfirmationDialog}
-        totalHours={totalHours}
       />
       <ImperativeTimeControl
         checked={imperative}
         onChange={handleChangeImperative}
       />
+      <TimesheetLineInfo totalHours={totalHours} />
       <TimesheetLineList
         lines={lines}
         onDelete={handleDeleteLine}

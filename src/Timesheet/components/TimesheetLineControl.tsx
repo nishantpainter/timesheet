@@ -1,7 +1,6 @@
 import React from "react";
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
@@ -11,11 +10,10 @@ const useStyles = makeStyles((theme) => ({
 type TimesheetLineControlProps = {
   onAdd: any;
   onDelete: any;
-  totalHours: number;
 };
 
 const TimesheetLineControl: React.FC<TimesheetLineControlProps> = (props) => {
-  const { onAdd, onDelete, totalHours } = props;
+  const { onAdd, onDelete } = props;
 
   const classes = useStyles();
   return (
@@ -38,9 +36,6 @@ const TimesheetLineControl: React.FC<TimesheetLineControlProps> = (props) => {
       >
         Delete All Lines
       </Button>
-      <Typography>
-        Total Hours : <b>{totalHours.toFixed(2)}</b>
-      </Typography>
     </Box>
   );
 };

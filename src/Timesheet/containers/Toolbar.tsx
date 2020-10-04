@@ -22,8 +22,6 @@ const useStyles = makeStyles((theme) => ({
 
 type ToolbarProps = {};
 
-const getDate = () => moment(new Date()).format("DD-MMM-YYYY HH:mm:ss");
-
 const Toolbar: React.FC<ToolbarProps> = (props) => {
   const classes = useStyles();
   const { handleToggleDarkTheme } = useTheme();
@@ -32,7 +30,6 @@ const Toolbar: React.FC<ToolbarProps> = (props) => {
   const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(
     null
   );
-  const [date, setDate] = React.useState(getDate());
 
   const handleOpenInfo = React.useCallback(
     (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -43,10 +40,6 @@ const Toolbar: React.FC<ToolbarProps> = (props) => {
 
   const handleCloseInfo = React.useCallback(() => {
     setAnchorEl(null);
-  }, []);
-
-  const handleUpdateDate = React.useCallback(() => {
-    setDate(getDate());
   }, []);
 
   const handleDownloadFile = React.useCallback(
@@ -144,21 +137,12 @@ const Toolbar: React.FC<ToolbarProps> = (props) => {
     [handleDownloadTxt, handleDownloadCsv, handleDownloadPdf]
   );
 
-  React.useEffect(() => {
-    const interval = setInterval(handleUpdateDate, 1000);
-    return () => clearInterval(interval);
-  }, [handleUpdateDate]);
-
   return (
     <AppBar color="default">
       <MuiToolbar variant="dense">
         <Box display="flex" flexGrow={1} alignItems="center">
           <Typography color="primary">
             <b>TIMESHEET</b>
-          </Typography>
-          &nbsp;&nbsp;
-          <Typography variant="body2">
-            <b>{date}</b>
           </Typography>
         </Box>
         <Box display="flex" alignItems="center">
