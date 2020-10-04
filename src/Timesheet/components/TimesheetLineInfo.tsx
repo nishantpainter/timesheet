@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const getDate = () => moment(new Date()).format("DD-MMM-YYYY HH:mm:ss");
+const getDate = () => moment(new Date()).format("DD-MMM-YYYY"); //HH:mm:ss
 
 type TimesheetLineInfoProps = {
   totalHours: number;
@@ -22,6 +22,7 @@ const TimesheetLineInfo: React.FC<TimesheetLineInfoProps> = (props) => {
   const classes = useStyles();
   const [date, setDate] = React.useState(getDate());
 
+  /*
   const handleUpdateDate = React.useCallback(() => {
     setDate(getDate());
   }, []);
@@ -30,6 +31,7 @@ const TimesheetLineInfo: React.FC<TimesheetLineInfoProps> = (props) => {
     const interval = setInterval(handleUpdateDate, 1000);
     return () => clearInterval(interval);
   }, [handleUpdateDate]);
+  */
 
   return (
     <Box
