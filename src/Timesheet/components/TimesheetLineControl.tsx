@@ -19,13 +19,13 @@ const TimesheetLineControl: React.FC<TimesheetLineControlProps> = (props) => {
   return (
     <Box display="flex" alignItems="center" height={32} marginBottom={1}>
       <Button
-        variant="outlined"
+        variant="contained"
         color="primary"
         size="small"
         className={classes.button}
         onClick={onAdd}
       >
-        Add Line
+        Add
       </Button>
       <Button
         variant="outlined"
@@ -34,7 +34,7 @@ const TimesheetLineControl: React.FC<TimesheetLineControlProps> = (props) => {
         className={classes.button}
         onClick={onDelete}
       >
-        Delete All Lines
+        Delete
       </Button>
     </Box>
   );
