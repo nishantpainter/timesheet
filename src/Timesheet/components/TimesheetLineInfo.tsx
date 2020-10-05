@@ -20,7 +20,7 @@ const TimesheetLineInfo: React.FC<TimesheetLineInfoProps> = (props) => {
   const { totalHours } = props;
 
   const classes = useStyles();
-  const [date, setDate] = React.useState(getDate());
+  const [date] = React.useState(getDate());
 
   /*
   const handleUpdateDate = React.useCallback(() => {
