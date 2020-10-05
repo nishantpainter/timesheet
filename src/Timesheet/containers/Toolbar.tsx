@@ -64,6 +64,14 @@ const Toolbar: React.FC<ToolbarProps> = (props) => {
     [handleGetDate]
   );
 
+  const handleGetTotalHours = React.useCallback(() => {
+    const totalHours = lines.reduce(
+      (totalHours, line) => totalHours + (Number(line.hours) || 0),
+      0
+    );
+    return totalHours;
+  }, [lines]);
+
   const handleGetFormattedText = React.useCallback(
     (extension: DownloadExtension) => {
       switch (extension) {
@@ -76,7 +84,7 @@ const Toolbar: React.FC<ToolbarProps> = (props) => {
               }
               return txt;
             },
-            `Timesheet : ${handleGetDate()}\n====================\n`
+            `Timesheet : ${handleGetDate()}; Total Hours : ${handleGetTotalHours()}\n============================================\n`
           );
           return txt;
         }
@@ -96,7 +104,7 @@ const Toolbar: React.FC<ToolbarProps> = (props) => {
           return "";
       }
     },
-    [lines, handleGetDate]
+    [lines, handleGetDate, handleGetTotalHours]
   );
 
   const handleDownloadTxt = React.useCallback(() => {
