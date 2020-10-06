@@ -4,11 +4,11 @@
 </div>
 
 # Table of Contents
-- **How to Use**
-- **Dark Mode**
-- **Offline Usage**
-- **Development**
-- **Privacy** 
+- **[How to Use](https://github.com/nishantpainter/timesheet#how-to-use)**
+- **[Dark Mode](https://github.com/nishantpainter/timesheet#dark-mode)**
+- **[Offline Usage](https://github.com/nishantpainter/timesheet#offline-usage)**
+- **[Development](https://github.com/nishantpainter/timesheet#development)**
+- **[Privacy](https://github.com/nishantpainter/timesheet#privacy)** 
 
 ## How to Use
 You can access the application by visiting [Website](https://nishantpainter.github.io/timesheet). The application has a features set as follows :
