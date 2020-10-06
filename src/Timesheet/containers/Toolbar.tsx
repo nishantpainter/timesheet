@@ -149,8 +149,9 @@ const Toolbar: React.FC<ToolbarProps> = (props) => {
     <AppBar color="default">
       <MuiToolbar variant="dense">
         <Box display="flex" flexGrow={1} alignItems="center">
+          <IconButton icon="timesheet" color='primary' />
           <Typography color="primary">
-            <b>TIMESHEET</b>
+            <b>Timsheet</b>
           </Typography>
         </Box>
         <Box display="flex" alignItems="center">
