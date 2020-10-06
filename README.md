@@ -1,7 +1,9 @@
----
+<p align="center">
+  <a href="https://nishantpainter.github.io/timesheet/" rel="noopener" target="_blank"><img width="756" src="https://nishantpainter.github.io/timesheet/readme-logo.png" alt="Timesheet logo"></a></p>
+</p>
 <div align="center">
 
-[Timesheet](https://nishantpainter.github.io/timesheet/) is an application for managing and quickly accessing your daily work time. It has a minimalistic features set required and sleek design. Stop opening, closing your local text editor for persisting and calculating the timesheet and hours manually. <br/>Start using [Timesheet](https://nishantpainter.github.io/timesheet/) now.
+[Timesheet](https://nishantpainter.github.io/timesheet/) is an application for managing and quickly accessing your daily work time. It has a minimalistic features set required and sleek design. Stop opening, closing your local text editor for persisting and calculating the timesheet and hours manually. Start using [Timesheet](https://nishantpainter.github.io/timesheet/) now.
 
 
 </div>
