@@ -151,7 +151,7 @@ const Toolbar: React.FC<ToolbarProps> = (props) => {
         <Box display="flex" flexGrow={1} alignItems="center">
           <IconButton icon="timesheet" color='primary' />
           <Typography color="primary">
-            <b>Timsheet</b>
+            <b>Timesheet</b>
           </Typography>
         </Box>
         <Box display="flex" alignItems="center">
