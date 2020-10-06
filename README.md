@@ -1,6 +1,6 @@
 ---
-<div align='center'>
-[Timesheet](https://nishantpainter.github.io/timesheet/) is an application for managing and quickly accessing your daily work time. It has a minimalistic features set required and sleek design. Stop opening, closing your local text editor for persisting and calculating the timesheet and hours manually. <br/>Start using [Timesheet](https://nishantpainter.github.io/timesheet/) now.
+<div align="center">
+[**Timesheet**](https://nishantpainter.github.io/timesheet/) is an application for managing and quickly accessing your daily work time. It has a minimalistic features set required and sleek design. Stop opening, closing your local text editor for persisting and calculating the timesheet and hours manually. <br/>Start using [**Timesheet**](https://nishantpainter.github.io/timesheet/) now.
 </div>
 
 # Table of Contents
@@ -11,7 +11,7 @@
 - **Privacy** 
 
 ## How to Use
-You can access the application by visiting : [https://nishantpainter.github.io/timesheet](https://nishantpainter.github.io/timesheet). The application has a feature set as follows :
+You can access the application by visiting : [https://nishantpainter.github.io/timesheet](https://nishantpainter.github.io/timesheet). The application has a features set as follows :
 
 - **Add**, **Update** and **Delete** Timesheet lines.
 - Quick overview of **Total Hours**.
@@ -26,5 +26,6 @@ The application is registered with service workers and behaves as a progressive 
 
 ## Development
 The application is scaffolded using create-react-app ([CRA](https://create-react-app.dev/docs/getting-started/)) with [Typescript](https://www.typescriptlang.org/) templating. You can clone the [Timesheet](https://github.com/nishantpainter/timesheet) repository for custom development. 
+
 ## Privacy
 The application makes use of local storage for persisting your work hour lines and does not store any timesheet data. The application uses Google analytics to get an overview of the application usage.
