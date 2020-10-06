@@ -70,11 +70,21 @@ const InfoPopover: React.FC<InfoPopoverProps> = (props) => {
       </Typography>
       <Typography color="secondary" gutterBottom>
         <Check />
-        &nbsp;Download timesheet in TXT, CSV and PDF format
+        &nbsp;Dark mode
       </Typography>
       <Typography color="secondary" gutterBottom>
         <Check />
-        &nbsp;Dark mode
+        &nbsp;Works Offline
+      </Typography>
+      <Typography color="secondary" gutterBottom>
+        <Check />
+        &nbsp;Download timesheet in TXT, CSV and PDF format
+      </Typography>
+      <Divider className={classes.divider} light />
+      <Typography gutterBottom>
+        The application works offline and can be used by using&nbsp;
+        <i>'Add to home screen'</i>&nbsp;option from browser setting on mobile
+        devices.
       </Typography>
       <Divider className={classes.divider} light />
       <Typography gutterBottom>
