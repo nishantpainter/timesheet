@@ -9,6 +9,7 @@ import SaveAltIcon from "@material-ui/icons/SaveAlt";
 import DeleteIcon from "@material-ui/icons/Delete";
 import HelpIcon from "@material-ui/icons/Help";
 import AddIcon from "@material-ui/icons/Add";
+import AssignmentIcon from "@material-ui/icons/Assignment";
 
 const icons = {
   info: InfoIcon,
@@ -17,6 +18,7 @@ const icons = {
   delete: DeleteIcon,
   question: HelpIcon,
   add: AddIcon,
+  timesheet: AssignmentIcon,
 };
 
 type IconButtonProps = MuiIconButtonProps & { icon: keyof typeof icons };
