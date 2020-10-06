@@ -1,7 +1,5 @@
 ---
-<div align="center">
 [Timesheet](https://nishantpainter.github.io/timesheet/) is an application for managing and quickly accessing your daily work time. It has a minimalistic features set required and sleek design. Stop opening, closing your local text editor for persisting and calculating the timesheet and hours manually. <br/>Start using [Timesheet](https://nishantpainter.github.io/timesheet/) now.
-</div>
 
 # Table of Contents
 - **[How to Use](https://github.com/nishantpainter/timesheet#how-to-use)**
