@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://nishantpainter.github.io/timesheet/" rel="noopener" target="_blank"><img width="756" src="https://nishantpainter.github.io/timesheet/readme-logo.png" alt="Timesheet logo"></a></p>
+  <a href="https://nishantpainter.github.io/timesheet/" rel="noopener" target="_blank"><img width="756" src="https://github.com/nishantpainter/timesheet/public/readme-logo.png" alt="Timesheet logo"></a></p>
 </p>
 <div align="center">
 
