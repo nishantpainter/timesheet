@@ -1,9 +1,9 @@
 <p align="center">
-  <a href="https://nishantpainter.github.io/timesheet/" rel="noopener" target="_blank"><img width="756" src="https://github.com/nishantpainter/timesheet/blob/master/public/readme-logo.png" alt="Timesheet logo"></a></p>
+  <a href="https://timesheet.js.org/" rel="noopener" target="_blank"><img width="756" src="https://timesheet.js.org/readme-logo.png" alt="Timesheet logo"></a></p>
 </p>
 <div align="center">
 
-[Timesheet](https://nishantpainter.github.io/timesheet/) is an application for managing and quickly accessing your daily work time. It has a minimalistic features set required and sleek design. Stop opening, closing your local text editor for persisting and calculating the timesheet and hours manually. Start using [Timesheet](https://nishantpainter.github.io/timesheet/) now.
+[Timesheet](https://timesheet.js.org/) is an application for managing and quickly accessing your daily work time. It has a minimalistic features set required and sleek design. Stop opening, closing your local text editor for persisting and calculating the timesheet and hours manually. Start using [Timesheet](https://timesheet.js.org/) now.
 
 
 </div>
@@ -16,7 +16,7 @@
 - **[Privacy](https://github.com/nishantpainter/timesheet#privacy)** 
 
 ## How to Use
-You can access the application by visiting [Website](https://nishantpainter.github.io/timesheet). The application has a features set as follows :
+You can access the application by visiting [Website](https://timesheet.js.org). The application has a features set as follows :
 
 - **Add**, **Update** and **Delete** Timesheet lines.
 - Quick overview of **Total Hours**.
