@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="./favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="Application for maintaining Timesheet" />
+    <link rel="apple-touch-icon" href="./logo192.png" />
+    <link rel="manifest" href="./manifest.json" />
+    <title>Timesheet - Daily work hours managing application</title>
+    <meta name="author" content="Nishant Painter" />
+    <meta
+      name="description"
+      content="Timesheet is an application for managing and quickly accessing your daily work time. It has a minimalistic features set required and sleek design. Stop opening, closing your local text editor for persisting and calculating the timesheet and hours manually. Start using Timesheet now."
+    />
+    <meta name="application-name" content="Timesheet" />
+    <meta
+      name="keywords"
+      content="timesheet,manager,worklinesmanager,workhours,dailytimesheet,offline,pwa,desktop,mobile,android,ios,workhours,dailymanager"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+    />
+    <!--Facebook OG-->
+    <meta property="og:url" content="https://timesheet.js.org/" />
+    <meta property="og:type" content="application" />
+    <meta
+      property="og:title"
+      content="Timesheet - Daily work hours managing application"
+    />
+    <meta
+      property="og:description"
+      content="Timesheet is an application for managing and quickly accessing your daily work time. It has a minimalistic features set required and sleek design. Stop opening, closing your local text editor for persisting and calculating the timesheet and hours manually. Start using Timesheet now."
+    />
+    <meta property="og:image" content="https://timesheet.js.org/logo192.png" />
+
+    <!-- Twitter OG-->
+    <meta name="twitter:card" content="Timesheet" />
+    <meta name="twitter:site" content="https://timesheet.js.org/" />
+    <meta name="twitter:creator" content="Nishant Painter" />
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-171631214-3"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "UA-171631214-3");
+    </script>
+  </head>
+  <style>
+    :root {
+      --spacing: 8px;
+      --white: #ffffff;
+      --black: #111111;
+      --primary: #009688;
+      --text: #616161;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Roboto", sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      margin: 0;
+      font-size: 16px;
+      color: var(--black);
+    }
+
+    code {
+      color: var(--primary);
+      font-weight: bold;
+    }
+
+    a {
+      color: var(--black);
+    }
+
+    a:hover {
+      color: var(--black);
+      text-decoration: none;
+    }
+
+    .card {
+      cursor: pointer;
+      padding: calc(var(--spacing) * 2);
+      background-color: var(--white);
+      box-shadow: 0 8px 40px -12px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease-in-out;
+    }
+
+    .rounded {
+      border-radius: var(--spacing);
+    }
+
+    /* Loader */
+
+    #loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 9999;
+      overflow: hidden;
+    }
+
+    #loader:before {
+      content: "";
+      position: fixed;
+      top: calc(50% - 20px);
+      left: calc(50% - 20px);
+      border: 6px solid var(--white);
+      border-top-color: var(--primary);
+      border-bottom-color: var(--primary);
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      -webkit-animation: animate-loader 0.5s linear infinite;
+      animation: animate-loader 0.5s linear infinite;
+    }
+
+    @-webkit-keyframes animate-loader {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes animate-loader {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* Header */
+    header .navigator {
+      position: fixed;
+      height: 60px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      padding: 12px;
+      transition: 0.5s;
+      background-color: var(--white);
+      box-shadow: 0 8px 40px -12px rgba(0, 0, 0, 0.3);
+    }
+
+    header h3 {
+      color: var(--primary);
+    }
+
+    header nav {
+      display: block;
+      width: 100%;
+    }
+
+    header nav ul {
+      display: flex;
+      list-style-type: none;
+      margin: 0px;
+      padding: 0px;
+      width: 100%;
+      justify-content: flex-end;
+    }
+
+    header nav li {
+      text-decoration: none;
+      position: relative;
+      white-space: nowrap;
+      padding: 12px;
+      display: list-item;
+    }
+
+    header nav li a {
+      text-decoration: none;
+      transition: 0.3s;
+      font-weight: bold;
+      font-size: 1.025rem;
+    }
+
+    .navigator a:hover,
+    .navigator .active > a,
+    .navigator li:hover > a {
+      color: var(--primary);
+    }
+
+    .navigator img {
+      cursor: pointer;
+      height: 24px;
+    }
+
+    /* Introduction */
+
+    #introduction {
+      height: 100vh;
+    }
+
+    #introduction .wrapper {
+      height: inherit;
+      width: inherit;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 8px;
+    }
+
+    #introduction .wrapper .card {
+      width: 90%;
+      max-width: 500px;
+      text-align: center;
+    }
+
+    #introduction .wrapper .title {
+      font-size: 1.5rem;
+    }
+
+    #introduction .wrapper p {
+      margin: 0;
+      padding-top: 8px;
+      color: var(--text);
+    }
+
+    #introduction .wrapper img {
+      border-radius: 8px;
+    }
+
+    #introduction .wrapper .title {
+      display: flex;
+      justify-content: center;
+      align-content: center;
+      align-items: center;
+      color: var(--primary);
+    }
+
+    #introduction .wrapper .subtitle {
+      margin-top: 16px;
+      margin-bottom: 24px;
+    }
+
+    #introduction .wrapper .getstarted-button {
+      display: block;
+      font-weight: bold;
+      border-radius: 4px;
+      padding: var(--spacing);
+      text-decoration: none;
+      border: 1px solid var(--primary);
+      transition: all 0.2s ease-in-out;
+      color: var(--white);
+      background-color: var(--primary);
+    }
+
+    @media only screen and (max-width: 600px) {
+      #introduction .wrapper .card {
+        width: 90%;
+      }
+    }
+
+    /* Footer */
+
+    #footer {
+      height: 100px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 8px 40px -12px rgba(0, 0, 0, 0.3);
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+
+    #footer h3,
+    h4 {
+      margin: 0px;
+      padding: 0px;
+    }
+
+    #footer a {
+      text-decoration: none;
+      color: var(--primary);
+    }
+  </style>
+  <body>
+    <header>
+      <div id="navigator" class="navigator">
+        <img src="./logo192.png" alt="Timesheet" />&nbsp;
+        <h3>Timesheet</h3>
+        <nav>
+          <ul>
+            <li>
+              <a
+                title="Github"
+                href="https://github.com/nishantpainter/timesheet"
+                target="_blank"
+                ><img src="./github.svg" alt="Github"
+              /></a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <section id="introduction">
+      <div class="wrapper">
+        <div class="card rounded">
+          <div class="title">
+            <img src="./logo512.png" alt="Timesheet" height="65" />
+            <h3>Timesheet</h3>
+          </div>
+          <p>
+            An application for managing and quickly accessing your daily work
+            time. It has a minimalistic features set required and sleek design.
+            Stop opening, closing your local text editor for persisting and
+            calculating the timesheet and hours manually. Start using now.
+          </p>
+          <br />
+          <a
+            class="getstarted-button"
+            href="https://timesheet.js.org"
+            target="_blank"
+          >
+            GET STARTED
+          </a>
+        </div>
+      </div>
+    </section>
+    <section id="footer">
+      <h3>
+        Made with &hearts; by
+        <a href="https://nishantpainter.github.io" target="_blank"
+          >Nishant Painter</a
+        >
+      </h3>
+    </section>
+
+    <div id="loader" class="introduction-pattern"></div>
+    <script src="./vendor/jquery.min.js"></script>
+    <script src="./vendor/jquery-easing.min.js"></script>
+    <script src="./js/main.js"></script>
+  </body>
+</html>
