@@ -10,6 +10,7 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import HelpIcon from "@material-ui/icons/Help";
 import AddIcon from "@material-ui/icons/Add";
 import AssignmentIcon from "@material-ui/icons/Assignment";
+import CheckIcon from "@material-ui/icons/Check";
 
 const icons = {
   info: InfoIcon,
@@ -19,6 +20,7 @@ const icons = {
   question: HelpIcon,
   add: AddIcon,
   timesheet: AssignmentIcon,
+  check: CheckIcon,
 };
 
 type IconButtonProps = MuiIconButtonProps & { icon: keyof typeof icons };
