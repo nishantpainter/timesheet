@@ -101,7 +101,10 @@ const StoreProvider = (props: any) => {
     (event, line) => {
       const { name, value } = event.target;
 
-      const declarativeTimeRegex = /^\d*\.?[0-5]?((?<=[0-5])[0-9]?)?$/;
+      const declarativeTimeRegex = /(^\d*$)|(^\d*\.?$)|(^\d*\.[0-5]{1}$)|(^\d*\.[0-5]{1}[0-9]{1}$)/;
+
+      // /^\d*\.?[0-5]?((?<=[0-5])[0-9]?)?$/; Look assertion not supported in safari
+
       const imperativeTimeRegex = /^\d*\.?\d*$/;
 
       const timeRegex = imperative ? imperativeTimeRegex : declarativeTimeRegex;
