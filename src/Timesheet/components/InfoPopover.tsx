@@ -1,5 +1,5 @@
 import React from "react";
-
+import Box from "@material-ui/core/Box";
 import Link from "@material-ui/core/Link";
 import Divider from "@material-ui/core/Divider";
 import Typography from "@material-ui/core/Typography";
@@ -7,6 +7,8 @@ import Popover, {
   PopoverProps as InfoPopoverProps,
 } from "@material-ui/core/Popover";
 import { makeStyles } from "@material-ui/core/styles";
+
+import IconButton from "./IconButton";
 
 const useStyles = makeStyles((theme) => ({
   popoverPaper: {
@@ -19,18 +21,16 @@ const useStyles = makeStyles((theme) => ({
   divider: {
     marginBottom: theme.spacing(),
   },
-  check: {
-    color: theme.palette.text.primary,
-  },
 }));
 
-const Check = () => {
-  const classes = useStyles();
-
+const CheckPoint = (props: any) => {
+  const { children } = props;
   return (
-    <span role="img" aria-label="check" className={classes.check}>
-      ✅
-    </span>
+    <Box display="flex" marginBottom={0.5} alignItems="center">
+      <IconButton icon="check" disableRipple />
+      &nbsp;
+      <Typography color="secondary">{children}</Typography>
+    </Box>
   );
 };
 
@@ -60,26 +60,11 @@ const InfoPopover: React.FC<InfoPopoverProps> = (props) => {
         to evaluate total hours of work.
       </Typography>
       <Divider className={classes.divider} light />
-      <Typography color="secondary" gutterBottom>
-        <Check />
-        &nbsp;Hassle-free access to your timesheet lines
-      </Typography>
-      <Typography color="secondary" gutterBottom>
-        <Check />
-        &nbsp;Instant overview of total time hours
-      </Typography>
-      <Typography color="secondary" gutterBottom>
-        <Check />
-        &nbsp;Dark mode
-      </Typography>
-      <Typography color="secondary" gutterBottom>
-        <Check />
-        &nbsp;Works Offline
-      </Typography>
-      <Typography color="secondary" gutterBottom>
-        <Check />
-        &nbsp;Download timesheet in TXT, CSV and PDF format
-      </Typography>
+      <CheckPoint>Hassle-free access to your timesheet lines</CheckPoint>
+      <CheckPoint>Instant overview of total time hours</CheckPoint>
+      <CheckPoint>Dark mode</CheckPoint>
+      <CheckPoint>Works Offline</CheckPoint>
+      <CheckPoint>Download timesheet in TXT, CSV and PDF format</CheckPoint>
       <Divider className={classes.divider} light />
       <Typography gutterBottom>
         The application works offline and can be used by using&nbsp;
